@@ -5,7 +5,7 @@ const Testemonials: React.FC = () => {
   return (
     <div className="m-5">
       <h1 className="text-center">Testemonials</h1>
-      <CardDeck className="m-5">
+      <CardDeck className="m-5 p-5">
         <Card className="mt-3 mb-3 mr-5 ml-5">
           <Card.Img
             variant="top"
