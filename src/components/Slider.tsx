@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
 
-const Slider: React.FC = () => {
+const BootrtapSlider: React.FC = () => {
   return (
     <Carousel>
       <Carousel.Item>
@@ -60,4 +60,4 @@ const Slider: React.FC = () => {
   );
 };
 
-export default Slider;
+export default BootrtapSlider;

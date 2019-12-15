@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
-const NavigationMenu: React.FC = () => {
+const BootrtapNavBar: React.FC = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
@@ -33,4 +33,4 @@ const NavigationMenu: React.FC = () => {
   );
 };
 
-export default NavigationMenu;
+export default BootrtapNavBar;
