@@ -1,7 +1,8 @@
 import React from "react";
 import BootrtapNavbar from "../components/Navbar";
 import BootrtapJumbotron from "../components/Jumbatron";
-import BootrtapSlider from "../components/Slider";
+import Slider from "../components/Slider";
+import Testemonials from "../components/Testemonials";
 import Footer from "../components/Footer";
 
 const Landing: React.FC = () => {
@@ -10,8 +11,8 @@ const Landing: React.FC = () => {
       <div>
         <BootrtapNavbar />
         <BootrtapJumbotron />
-        <BootrtapSlider />
-        <p>Landing Page</p>
+        <Slider />
+        <Testemonials />
       </div>
       <Footer />
     </>
