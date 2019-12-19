@@ -25,7 +25,8 @@ const Dashboard: React.FC = () => {
   const latitude = 47.660556;
   const longitude = 27.587222;
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
+  const url = "";
+  //   `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
 
   useEffect(() => {
     getWeatherData(url);
