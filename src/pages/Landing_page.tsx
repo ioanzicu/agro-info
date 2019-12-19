@@ -1,6 +1,6 @@
 import React from "react";
-import BootrtapNavbar from "../components/Navbar";
-import BootrtapJumbotron from "../components/Jumbatron";
+import Navbar from "../components/Navbar";
+import Jumbotron from "../components/Jumbatron";
 import Slider from "../components/Slider";
 import BenfitSection from "../components/BenefitSection";
 import Testemonials from "../components/Testemonials";
@@ -10,8 +10,8 @@ const Landing: React.FC = () => {
   return (
     <>
       <div>
-        <BootrtapNavbar />
-        <BootrtapJumbotron />
+        <Navbar />
+        <Jumbotron />
         <Slider />
         <BenfitSection
           orientationLeft={true}
