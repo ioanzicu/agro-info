@@ -2,57 +2,34 @@ import React, { useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 
 const Dashboard: React.FC = () => {
-  const asyncCallPost = async () => {
-    const bodyData = {
-      name: "Raionul Glodeni",
-      geo_json: {
-        type: "Feature",
-        properties: {},
-        geometry: {
-          type: "Polygon",
-          coordinates: [
-            [
-              [-332.459291, 47.639719],
-              [-332.459291, 47.677684],
-              [-332.372055, 47.677684],
-              [-332.372055, 47.639719],
-              [-332.459291, 47.639719]
-            ]
-          ]
+  const getWeatherData = (url: string) => {
+    fetch(url)
+      .then(function(response) {
+        if (response.status !== 200) {
+          console.log(
+            "Looks like there was a problem. Status Code: " + response.status
+          );
+          return;
         }
-      }
-    };
 
-    const agroUrl =
-      "http://api.agromonitoring.com/agro/1.0/polygons?appid={API_KEY}";
-    try {
-      const data = await postData(agroUrl, bodyData);
-      console.log(JSON.stringify(data));
-    } catch (error) {
-      console.error(error);
-    }
+        // Examine the text in the response
+        response.json().then(function(data) {
+          console.log(data);
+        });
+      })
+      .catch(function(err) {
+        console.log("Fetch Error :-S", err);
+      });
   };
+
+  const latitude = 47.660556;
+  const longitude = 27.587222;
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
 
   useEffect(() => {
-    asyncCallPost();
+    getWeatherData(url);
   });
-
-  const postData = async (url = "", data = {}) => {
-    const response = await fetch(url, {
-      method: "POST", // * GET, POST, PUT, DELETE
-      mode: "cors", // no-cors, cors, same-origin
-      cache: "no-cache",
-      credentials: "same-origin", // include, same-origin, omit
-      headers: {
-        "Content-Type": "application/json"
-        // 'Content-Type': 'applicaion/x-www-form-urlencoded,
-      },
-      redirect: "follow", // manual, follow, error
-      referrer: "no-referrer", // no-referrer, cliend
-      body: JSON.stringify(data)
-    });
-    return await response.json(); // parses JSON response into JS object
-  };
 
   return (
     <Container className="p-5">
