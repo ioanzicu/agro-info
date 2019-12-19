@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { Container, Table } from "react-bootstrap";
 
 const Dashboard: React.FC = () => {
@@ -30,7 +30,7 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     getWeatherData(url);
-  });
+  }, [url]);
 
   return (
     <Container className="p-5">
