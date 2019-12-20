@@ -1,10 +1,14 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import Logo from "../images/logo.png";
 
 const BootrtapNavBar: React.FC = () => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+    <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+      <Navbar.Brand href="#home">
+        <img width="50px" height="50px" src={Logo} alt="logo" />
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
