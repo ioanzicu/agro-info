@@ -1,7 +1,7 @@
 import React, { FormEvent, useState, memo } from "react";
 import useInput from "../hoc/inputHook";
 // import dataFetchingHook from "../hoc/dataFetchingHook";
-import { Form, Col, Row, Button, Spinner } from "react-bootstrap";
+import { Form, Col, Row, Button, Spinner, Alert } from "react-bootstrap";
 
 const InputLocation = memo((_props: any) => {
   // get input data from the custom hook
@@ -46,20 +46,23 @@ const InputLocation = memo((_props: any) => {
 
   // show spinner if there are errors or is loading
   if (loading) return <Spinner animation="border" />;
-  if (error) return error.message;
+  if (error)
+    return <Alert variant="danger">Something went wrong: {error}.</Alert>;
 
   // if there is a result set the coordinates wich will be passed to the parent component
   // because they are required for the Dashboard component
   if (
     results.Response &&
     results.Response.View[0].Result[0].Location.DisplayPosition.Latitude &&
-    results.Response.View[0].Result[0].Location.DisplayPosition.Longitude
+    results.Response.View[0].Result[0].Location.DisplayPosition.Longitude &&
+    results.Response.View[0].Result[0].Location.Address.Label
   ) {
     _props.setCoodinates({
       longitude:
         results.Response.View[0].Result[0].Location.DisplayPosition.Longitude,
       latitude:
-        results.Response.View[0].Result[0].Location.DisplayPosition.Latitude
+        results.Response.View[0].Result[0].Location.DisplayPosition.Latitude,
+      locationName: results.Response.View[0].Result[0].Location.Address.Label
     });
   }
 

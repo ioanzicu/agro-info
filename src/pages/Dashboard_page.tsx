@@ -7,7 +7,8 @@ import InputLoaction from "../components/InputLocation";
 const Dashboard_page: React.FC = () => {
   const initialValues = {
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    locationName: ""
   };
 
   const [coordinates, setCoordinates] = useState(initialValues);
@@ -20,7 +21,7 @@ const Dashboard_page: React.FC = () => {
         <InputLoaction setCoodinates={setCoordinates} />
       </Jumbotron>
 
-      <Dashboard />
+      <Dashboard coordinates={coordinates} />
     </div>
   );
 };
