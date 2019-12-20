@@ -37,17 +37,14 @@ const InputLocation = memo((_props: any) => {
     // prevent page from refreshing
     event.preventDefault();
 
-    // fetch
-    fetchData(url);
+    if (value !== "") {
+      // fetch
+      fetchData(url);
+    }
 
     // reset the input field
     reset();
   };
-
-  // show spinner if there are errors or is loading
-  if (loading) return <Spinner animation="border" />;
-  if (error)
-    return <Alert variant="danger">Something went wrong: {error}.</Alert>;
 
   // if there is a result set the coordinates wich will be passed to the parent component
   // because they are required for the Dashboard component
@@ -65,6 +62,12 @@ const InputLocation = memo((_props: any) => {
       locationName: results.Response.View[0].Result[0].Location.Address.Label
     });
   }
+
+  // if request is loading -> show spinner
+  if (loading) return <Spinner animation="border" />;
+  // if an error occur -> show alert message
+  if (error)
+    return <Alert variant="danger">Something went wrong: {error}.</Alert>;
 
   return (
     <Form className="pl-5 pr-5" onSubmit={handleSubmit}>
