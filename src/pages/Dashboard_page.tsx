@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Dashboard from "../components/Dashboard";
 import Jumbotron from "../components/Jumbatron";
 import InputLoaction from "../components/InputLocation";
+import Footer from "../components/Footer";
 
 const Dashboard_page: React.FC = () => {
   const initialValues = {
@@ -22,6 +23,7 @@ const Dashboard_page: React.FC = () => {
       </Jumbotron>
 
       <Dashboard coordinates={coordinates} />
+      <Footer />
     </div>
   );
 };
