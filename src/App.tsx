@@ -1,14 +1,16 @@
 import React from "react";
 import "./App.css";
-import Landing from "./pages/Landing";
+import Landing from "./pages/Landing_page";
+import { Route, Switch } from "react-router-dom";
+import Dashboard from "./pages/Dashboard_page";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Landing />
-      <header className="App-header">
-        <p>Welcome to the Agro Info App!!!</p>
-      </header>
+      <Switch>
+        <Route path="/" exact component={Landing} />
+        <Route path="/dashboard" component={Dashboard} />
+      </Switch>
     </div>
   );
 };
