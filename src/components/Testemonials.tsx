@@ -4,7 +4,7 @@ import { CardDeck, Card } from "react-bootstrap";
 const testimonialsCards = [
   {
     imageUrl:
-      "https://images.unsplash.com/photo-1509506489701-dfe23b067808?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=160&q=80",
+      "https://images.unsplash.com/photo-1509506489701-dfe23b067808?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=360&q=80",
     title: "Brad Jordon",
     text:
       "Being an experienced farmer, I know that the weather should not the underestimated in the agriculture business. Thanks to the Agro Info team, I have the most updated weather data from all locations with I need. The experienced cowboy recommends.",
@@ -12,7 +12,7 @@ const testimonialsCards = [
   },
   {
     imageUrl:
-      "https://images.unsplash.com/photo-1477524076598-003de1c88dff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=160&q=60",
+      "https://images.unsplash.com/photo-1477524076598-003de1c88dff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=360&q=60",
     title: "Marta Limard",
     text:
       "Thanks to the Agro Info Platform, every day I am up to date with the weather data and I can take care of the flowers. Thanks to that, I can deliver beautiful flowers at the to the customers. Recommend!!!",
@@ -20,7 +20,7 @@ const testimonialsCards = [
   },
   {
     imageUrl:
-      "https://images.unsplash.com/photo-1544098485-2a2ed6da40ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=150&q=80",
+      "https://images.unsplash.com/photo-1544098485-2a2ed6da40ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=350&q=80",
     title: "Ricardo Alvarez",
     text:
       "The Agro Info is easy to tool to use for daily activity, not just agriculture. The developers are open for communication and oriented for permanent improvement of UI/UX experience.",
