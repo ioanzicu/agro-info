@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Table, Spinner, Alert } from "react-bootstrap";
+import { capitalizeString, replaceUnderscore } from "../helpers/functions";
 
 export interface IWeatherResults {
   coord: Coord;
@@ -145,7 +146,7 @@ const Dashboard = (_props: any) => {
             {results &&
               results.main &&
               Object.entries(results.main).map(([key, value], index) => (
-                <tr>
+                <tr key={key}>
                   <td>{index + 1}</td>
                   <td>
                     <span
@@ -153,7 +154,7 @@ const Dashboard = (_props: any) => {
                         __html: temperatureIcons[index]
                       }}
                     ></span>{" "}
-                    {key}
+                    {capitalizeString(replaceUnderscore(key))}
                   </td>
                   <td>{value}</td>
                 </tr>
@@ -161,21 +162,23 @@ const Dashboard = (_props: any) => {
           </tbody>
           {/* WIND */}
           <thead>
-            <th>#</th>
-            <th>Wind</th>
-            <th>Values</th>
+            <tr>
+              <th>#</th>
+              <th>Wind</th>
+              <th>Values</th>
+            </tr>
           </thead>
           <tbody>
             {results &&
               results.wind &&
               Object.entries(results.wind).map(([key, value], index) => (
-                <tr>
+                <tr key={key}>
                   <td>{index + 1}</td>
                   <td>
                     <span
                       dangerouslySetInnerHTML={{ __html: windIcons[index] }}
                     ></span>{" "}
-                    {key}
+                    {capitalizeString(key)}
                   </td>
                   <td>{value}</td>
                 </tr>
