@@ -14,16 +14,12 @@ const BootrtapNavBar: React.FC = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link className="ml-3 mr-3">
-            <Link to="/">
-              <i className="fas fa-home"></i> Home
-            </Link>
-          </Nav.Link>
-          <Nav.Link className="ml-3 mr-3">
-            <Link to="/dashboard">
-              <i className="fas fa-columns"></i> Dashboard
-            </Link>
-          </Nav.Link>
+          <Link className="m-3" to="/">
+            <i className="fas fa-home"></i> Home
+          </Link>
+          <Link className="m-3" to="/dashboard">
+            <i className="fas fa-columns"></i> Dashboard
+          </Link>
         </Nav>
         <Nav>
           <Nav.Link href="#deets">

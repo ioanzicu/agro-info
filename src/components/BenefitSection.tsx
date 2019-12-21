@@ -3,10 +3,10 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 
 const LeftOrientation = (imageSrc: string, text: string) => (
   <Row>
-    <Col xs={6} md={6}>
-      <Image src={imageSrc} rounded />
+    <Col xs={6} sm={6} md={6}>
+      <Image src={imageSrc} rounded fluid />
     </Col>
-    <Col xs={6} md={6}>
+    <Col xs={6} sm={6} md={6}>
       <p>{text}</p>
     </Col>
   </Row>
@@ -14,11 +14,11 @@ const LeftOrientation = (imageSrc: string, text: string) => (
 
 const RightOrientation = (imageSrc: string, text: string) => (
   <Row>
-    <Col xs={6} md={6}>
+    <Col xs={6} sm={6} md={6}>
       <p>{text}</p>
     </Col>
-    <Col xs={6} md={6}>
-      <Image src={imageSrc} rounded />
+    <Col xs={6} sm={6} md={6}>
+      <Image src={imageSrc} rounded fluid />
     </Col>
   </Row>
 );
@@ -36,12 +36,10 @@ const BenefitSection: React.FC<BenefitSectionProps> = ({
   text,
   imageSrc
 }) => (
-  <div className="m-5">
-    <Container className="p-5">
-      {orientationLeft ? LeftOrientation(imageSrc, text) : null}
-      {orientationRight ? RightOrientation(imageSrc, text) : null}
-    </Container>
-  </div>
+  <Container className="pt-5 pb-5">
+    {orientationLeft ? LeftOrientation(imageSrc, text) : null}
+    {orientationRight ? RightOrientation(imageSrc, text) : null}
+  </Container>
 );
 
 export default BenefitSection;

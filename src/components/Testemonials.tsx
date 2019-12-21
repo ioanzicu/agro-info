@@ -5,8 +5,8 @@ const Testemonials: React.FC = () => {
   return (
     <div className="m-5">
       <h1 className="text-center">Testemonials</h1>
-      <CardDeck className="m-5 p-5">
-        <Card className="mt-3 mb-3 mr-5 ml-5">
+      <CardDeck className="pt-3 pb-3">
+        <Card className="mt-3 mb-3 mr-3 ml-3">
           <Card.Img
             variant="top"
             src="https://images.unsplash.com/photo-1544098485-2a2ed6da40ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=150&q=80"
@@ -23,7 +23,7 @@ const Testemonials: React.FC = () => {
             <small className="text-muted">Last updated 3 mins ago</small>
           </Card.Footer>
         </Card>
-        <Card className="mt-3 mb-3 mr-5 ml-5">
+        <Card className="mt-3 mb-3 mr-3 ml-3">
           <Card.Img
             variant="top"
             src="https://images.unsplash.com/photo-1477524076598-003de1c88dff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=160&q=60"
@@ -39,7 +39,7 @@ const Testemonials: React.FC = () => {
             <small className="text-muted">Last updated 3 mins ago</small>
           </Card.Footer>
         </Card>
-        <Card className="mt-3 mb-3 mr-5 ml-5">
+        <Card className="mt-3 mb-3 mr-3 ml-3">
           <Card.Img
             variant="top"
             src="https://images.unsplash.com/photo-1509506489701-dfe23b067808?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=160&q=80"
