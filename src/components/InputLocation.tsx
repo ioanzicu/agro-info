@@ -137,20 +137,23 @@ const InputLocation = memo((_props: any) => {
     return <Alert variant="danger">Something went wrong: {error}.</Alert>;
 
   return (
-    <Form className="pl-5 pr-5" onSubmit={handleSubmit}>
-      <Form.Group as={Row}>
-        <Col sm={8}>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group as={Row} md="4">
+        <Col sm={2} md={2} lg={2}></Col>
+        <Col sm={6} md={6} lg={6}>
           <Form.Control
             type="text"
             placeholder="Enter Name of the City/Vilage"
             {...bind}
           />
         </Col>
-        <Col sm={4}>
-          <Button variant="primary" type="submit" className="pl-5 pr-5">
-            <i className="fas fa-search"></i> Submit
+        <Col sm={2} md={2} lg={2}>
+          <Button className="pr-3 pl-3" variant="primary" type="submit">
+            <i className="fas fa-search pr-3"></i> Submit
           </Button>
         </Col>
+        <Col sm={2} md={2} lg={2}></Col>
+
         <p>{JSON.stringify(results)}</p>
       </Form.Group>
     </Form>

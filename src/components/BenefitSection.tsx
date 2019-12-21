@@ -37,8 +37,8 @@ const BenefitSection: React.FC<BenefitSectionProps> = ({
   imageSrc
 }) => (
   <Container className="pt-5 pb-5">
-    {orientationLeft ? LeftOrientation(imageSrc, text) : null}
-    {orientationRight ? RightOrientation(imageSrc, text) : null}
+    {orientationLeft && LeftOrientation(imageSrc, text)}
+    {orientationRight && RightOrientation(imageSrc, text)}
   </Container>
 );
 
