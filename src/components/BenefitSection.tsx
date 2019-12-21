@@ -6,7 +6,12 @@ const LeftOrientation = (imageSrc: string, text: string) => (
     <Col xs={6} sm={6} md={6}>
       <Image src={imageSrc} rounded fluid />
     </Col>
-    <Col xs={6} sm={6} md={6}>
+    <Col
+      xs={6}
+      sm={6}
+      md={6}
+      className="justify-content-center align-self-center text-justify"
+    >
       <p>{text}</p>
     </Col>
   </Row>
@@ -14,7 +19,12 @@ const LeftOrientation = (imageSrc: string, text: string) => (
 
 const RightOrientation = (imageSrc: string, text: string) => (
   <Row>
-    <Col xs={6} sm={6} md={6}>
+    <Col
+      xs={6}
+      sm={6}
+      md={6}
+      className="justify-content-center align-self-center text-justify"
+    >
       <p>{text}</p>
     </Col>
     <Col xs={6} sm={6} md={6}>
@@ -36,7 +46,7 @@ const BenefitSection: React.FC<BenefitSectionProps> = ({
   text,
   imageSrc
 }) => (
-  <Container className="pt-5 pb-5">
+  <Container className="p-5 mt-5 mb-5">
     {orientationLeft && LeftOrientation(imageSrc, text)}
     {orientationRight && RightOrientation(imageSrc, text)}
   </Container>

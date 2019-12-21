@@ -13,7 +13,11 @@ const BootrtapJumbotron: React.FC = (props: any) => {
   );
 
   return (
-    <Jumbotron fluid className="mb-0">
+    <Jumbotron
+      fluid
+      className="mb-0"
+      style={{ backgroundColor: "rgba(51,51,51,0.7)", color: "#fff" }}
+    >
       <Container>{props.children ? props.children : content}</Container>
     </Jumbotron>
   );
