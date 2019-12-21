@@ -148,7 +148,7 @@ const InputLocation = memo((_props: any) => {
         </Col>
         <Col sm={4}>
           <Button variant="primary" type="submit" className="pl-5 pr-5">
-            Submit
+            <i className="fas fa-search"></i> Submit
           </Button>
         </Col>
         <p>{JSON.stringify(results)}</p>

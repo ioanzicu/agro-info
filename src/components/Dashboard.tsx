@@ -101,6 +101,20 @@ const Dashboard = (_props: any) => {
   if (error)
     return <Alert variant="danger">Something went wrong: {error}.</Alert>;
 
+  const temperatureIcons = [
+    '<i class="fas fa-thermometer-half"></i>',
+    '<i class="fas fa-smile"></i>',
+    '<i class="fas fa-temperature-low"></i>',
+    '<i class="fas fa-temperature-high"></i>',
+    '<i class="fas fa-compress"></i>',
+    '<i class="fas fa-water"></i>'
+  ];
+
+  const windIcons = [
+    '<i class="fas fa-wind"></i>',
+    '<i class="fas fa-compass"></i>'
+  ];
+
   return (
     <Container className="p-5">
       {locationName && (
@@ -119,6 +133,7 @@ const Dashboard = (_props: any) => {
       )}
       {results && results.weather && (
         <Table className="p-5" bordered hover responsive>
+          {/* TEMPERATURE */}
           <thead>
             <tr>
               <th>#</th>
@@ -132,11 +147,19 @@ const Dashboard = (_props: any) => {
               Object.entries(results.main).map(([key, value], index) => (
                 <tr>
                   <td>{index + 1}</td>
-                  <td>{key}</td>
+                  <td>
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html: temperatureIcons[index]
+                      }}
+                    ></span>{" "}
+                    {key}
+                  </td>
                   <td>{value}</td>
                 </tr>
               ))}
           </tbody>
+          {/* WIND */}
           <thead>
             <th>#</th>
             <th>Wind</th>
@@ -148,11 +171,17 @@ const Dashboard = (_props: any) => {
               Object.entries(results.wind).map(([key, value], index) => (
                 <tr>
                   <td>{index + 1}</td>
-                  <td>{key}</td>
+                  <td>
+                    <span
+                      dangerouslySetInnerHTML={{ __html: windIcons[index] }}
+                    ></span>{" "}
+                    {key}
+                  </td>
                   <td>{value}</td>
                 </tr>
               ))}
           </tbody>
+          {/* Clouds */}
           <thead>
             <tr>
               <th>#</th>
@@ -164,7 +193,9 @@ const Dashboard = (_props: any) => {
             {results && results.clouds && (
               <tr>
                 <td>+</td>
-                <td>Clouds</td>
+                <td>
+                  <i className="fas fa-cloud"></i> Clouds
+                </td>
                 <td>{results.clouds.all}</td>
               </tr>
             )}

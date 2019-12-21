@@ -4,7 +4,7 @@ import { Jumbotron, Container } from "react-bootstrap";
 const BootrtapJumbotron: React.FC = (props: any) => {
   const content = (
     <>
-      <h1>Fluid jumbotron</h1>
+      <h1>Welcom to the Agro Info App</h1>
       <p>
         This is a modified jumbotron that occupies the entire horizontal space
         of its parent.

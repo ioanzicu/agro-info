@@ -8,22 +8,29 @@ const BootrtapNavBar: React.FC = () => {
     <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
       <Link to="/">
         <Navbar.Brand className="mr-5">
-          <img width="50px" height="50px" src={Logo} alt="logo" />
+          <img width="50px" height="50px" src={Logo} alt="logo" /> Agro Info
         </Navbar.Brand>
       </Link>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link className="ml-3 mr-3">
-            <Link to="/">Home </Link>
+            <Link to="/">
+              <i className="fas fa-home"></i> Home
+            </Link>
           </Nav.Link>
           <Nav.Link className="ml-3 mr-3">
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/dashboard">
+              <i className="fas fa-columns"></i> Dashboard
+            </Link>
           </Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link href="#deets">More deets</Nav.Link>
+          <Nav.Link href="#deets">
+            <i className="fas fa-sign-in-alt"></i> Log In
+          </Nav.Link>
           <Nav.Link eventKey={2} href="#memes">
-            Dank memes
+            Register
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
