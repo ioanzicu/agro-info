@@ -1,4 +1,5 @@
 {
+  "homepage": "https://ioanzicu.github.io/agro-info/",
   "name": "agro-info",
   "version": "0.1.0",
   "private": true,
@@ -22,6 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build -b master",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -40,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^16.9.17"
+    "@types/react": "^16.9.17",
+    "gh-pages": "^2.1.1"
   }
 }

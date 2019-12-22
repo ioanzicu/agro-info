@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Table, Spinner, Alert } from "react-bootstrap";
+import { capitalizeString, replaceUnderscore } from "../helpers/functions";
 
 export interface IWeatherResults {
   coord: Coord;
@@ -101,6 +102,20 @@ const Dashboard = (_props: any) => {
   if (error)
     return <Alert variant="danger">Something went wrong: {error}.</Alert>;
 
+  const temperatureIcons = [
+    '<i class="fas fa-thermometer-half"></i>',
+    '<i class="fas fa-smile"></i>',
+    '<i class="fas fa-temperature-low"></i>',
+    '<i class="fas fa-temperature-high"></i>',
+    '<i class="fas fa-compress"></i>',
+    '<i class="fas fa-water"></i>'
+  ];
+
+  const windIcons = [
+    '<i class="fas fa-wind"></i>',
+    '<i class="fas fa-compass"></i>'
+  ];
+
   return (
     <Container className="p-5">
       {locationName && (
@@ -119,6 +134,7 @@ const Dashboard = (_props: any) => {
       )}
       {results && results.weather && (
         <Table className="p-5" bordered hover responsive>
+          {/* TEMPERATURE */}
           <thead>
             <tr>
               <th>#</th>
@@ -130,29 +146,45 @@ const Dashboard = (_props: any) => {
             {results &&
               results.main &&
               Object.entries(results.main).map(([key, value], index) => (
-                <tr>
+                <tr key={key}>
                   <td>{index + 1}</td>
-                  <td>{key}</td>
+                  <td>
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html: temperatureIcons[index]
+                      }}
+                    ></span>{" "}
+                    {capitalizeString(replaceUnderscore(key))}
+                  </td>
                   <td>{value}</td>
                 </tr>
               ))}
           </tbody>
+          {/* WIND */}
           <thead>
-            <th>#</th>
-            <th>Wind</th>
-            <th>Values</th>
+            <tr>
+              <th>#</th>
+              <th>Wind</th>
+              <th>Values</th>
+            </tr>
           </thead>
           <tbody>
             {results &&
               results.wind &&
               Object.entries(results.wind).map(([key, value], index) => (
-                <tr>
+                <tr key={key}>
                   <td>{index + 1}</td>
-                  <td>{key}</td>
+                  <td>
+                    <span
+                      dangerouslySetInnerHTML={{ __html: windIcons[index] }}
+                    ></span>{" "}
+                    {capitalizeString(key)}
+                  </td>
                   <td>{value}</td>
                 </tr>
               ))}
           </tbody>
+          {/* Clouds */}
           <thead>
             <tr>
               <th>#</th>
@@ -164,7 +196,9 @@ const Dashboard = (_props: any) => {
             {results && results.clouds && (
               <tr>
                 <td>+</td>
-                <td>Clouds</td>
+                <td>
+                  <i className="fas fa-cloud"></i> Clouds
+                </td>
                 <td>{results.clouds.all}</td>
               </tr>
             )}
