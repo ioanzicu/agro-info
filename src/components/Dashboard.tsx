@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Container, Table, Spinner, Alert } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
+import firebase from "../helpers/firebase";
+import { REGISTER, SIGN_IN } from "../constants/routes";
 import { capitalizeString, replaceUnderscore } from "../helpers/functions";
 
 export interface IWeatherResults {
@@ -68,12 +71,30 @@ const Dashboard = (_props: any) => {
 
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
 
+  const [quote, setQuote] = useState("");
+
   useEffect(() => {
     // make reqiest when the longitude and latitude are set
     if (latitude !== 0 && longitude !== 0) {
       getWeatherData(url);
     }
   }, [url, latitude, longitude]);
+
+
+  useEffect(() => {
+    firebase.getCurrentUserQuote().then(setQuote);
+  });
+
+  if (!firebase.getCurrentUserName()) {
+    // not loggeed in
+    // alert("Please login first");
+    console.log("Please login first");
+
+    // redirect to the singn in page
+    _props.history.replace(SIGN_IN);
+    return null;
+  }
+
 
   const getWeatherData = async (url: string) => {
     try {
@@ -118,6 +139,9 @@ const Dashboard = (_props: any) => {
 
   return (
     <Container className="p-5">
+      <h1>
+        Hello {firebase.getCurrentUserName()}. Your quote: {quote}
+      </h1>
       {locationName && (
         <div className="text-center">
           <h1>{locationName}</h1>
@@ -209,4 +233,4 @@ const Dashboard = (_props: any) => {
   );
 };
 
-export default Dashboard;
+export default withRouter(Dashboard);

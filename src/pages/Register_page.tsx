@@ -1,10 +1,17 @@
 import React, { useState, FormEvent, ChangeEvent } from "react";
+import { withRouter } from "react-router-dom";
 import { Form, Container, Button } from "react-bootstrap";
 import Navbar from "../components/Navbar";
+import * as ROUTES from "../constants/routes";
+import firebase from "../helpers/firebase";
 
-const Register = () => {
+const Register = (props: any) => {
   const [validated, setValidated] = useState(false);
+  // Form States
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [quote, setQuote] = useState("");
 
   const handleSubmit: any = (event: FormEvent<HTMLInputElement>) => {
     const form = event.currentTarget;
@@ -14,6 +21,23 @@ const Register = () => {
     }
     setValidated(true);
   };
+
+  async function onRegister() {
+    try {
+      console.log("1");
+      await firebase.register(name, email, password);
+      // add quote in the firestore db
+      console.log("2");
+
+      await firebase.addQuote(quote);
+      // redirect to the dashboard page
+      console.log("3");
+
+      props.history.replace(ROUTES.DASHBOARD);
+    } catch (error) {
+      alert(`Registration error ${error.message}`);
+    }
+  }
 
   return (
     <>
@@ -37,7 +61,11 @@ const Register = () => {
               required
               type="text"
               placeholder="Full Name"
-              defaultValue="John Doe"
+              autoFocus
+              value={name}
+              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+                setName(event.target.value)
+              }
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             <Form.Control.Feedback type="invalid">
@@ -46,7 +74,15 @@ const Register = () => {
           </Form.Group>
           <Form.Group controlId="formGroupEmail">
             <Form.Label>Email Address</Form.Label>
-            <Form.Control required type="email" placeholder="Email" />
+            <Form.Control
+              required
+              type="email"
+              value={email}
+              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+                setEmail(event.target.value)
+              }
+              placeholder="Email"
+            />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             <Form.Control.Feedback type="invalid">
               Please Enter a valid Email Address.
@@ -57,6 +93,7 @@ const Register = () => {
             <Form.Control
               required
               type="password"
+              value={password}
               onChange={(event: ChangeEvent<HTMLSelectElement>) =>
                 setPassword(event.target.value)
               }
@@ -67,7 +104,24 @@ const Register = () => {
               Please Enter Password.
             </Form.Control.Feedback>
           </Form.Group>
-          <Button className="mt-3 w-100" type="submit">
+          <Form.Group controlId="formGroupName">
+            <Form.Label>Favorite Quote</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              placeholder="Quote"
+              autoFocus
+              value={quote}
+              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+                setQuote(event.target.value)
+              }
+            />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">
+              Please Enter your Favourite Quote.
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Button className="mt-3 w-100" onClick={onRegister} type="submit">
             Register
           </Button>
         </Form>
@@ -76,4 +130,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default withRouter(Register);

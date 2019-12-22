@@ -1,19 +1,34 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, ChangeEvent } from "react";
+import { withRouter } from "react-router-dom";
 import { Form, Container, Button } from "react-bootstrap";
+import * as ROUTES from "../constants/routes";
 import Navbar from "../components/Navbar";
+import firebase from "../helpers/firebase";
 
-const SignIn = () => {
+const SignIn = (props: any) => {
   const [validated, setValidated] = useState(false);
+  // Form State
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit: any = (event: FormEvent<HTMLInputElement>) => {
     const form = event.currentTarget;
-    console.log(event.currentTarget);
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
     setValidated(true);
   };
+
+  async function onSignIn() {
+    try {
+      await firebase.login(email, password);
+      // redirect to the dashboard page
+      props.history.replace(ROUTES.DASHBOARD);
+    } catch (error) {
+      alert(`SignIn error ${error.message}`);
+    }
+  }
 
   return (
     <>
@@ -33,7 +48,15 @@ const SignIn = () => {
         >
           <Form.Group controlId="formGroupEmail">
             <Form.Label>Email Address</Form.Label>
-            <Form.Control required type="email" placeholder="Email" />
+            <Form.Control
+              required
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+                setEmail(event.target.value)
+              }
+            />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             <Form.Control.Feedback type="invalid">
               Please Enter a valid Email Address.
@@ -41,13 +64,21 @@ const SignIn = () => {
           </Form.Group>
           <Form.Group controlId="formGroupPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control required type="password" placeholder="Password" />
+            <Form.Control
+              required
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+                setPassword(event.target.value)
+              }
+            />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             <Form.Control.Feedback type="invalid">
               Please Enter Password.
             </Form.Control.Feedback>
           </Form.Group>
-          <Button className="mt-3 w-100" type="submit">
+          <Button className="mt-3 w-100" onClick={onSignIn} type="submit">
             Sign In
           </Button>
         </Form>
@@ -56,4 +87,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default withRouter(SignIn);

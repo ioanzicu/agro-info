@@ -1,10 +1,10 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { LANDING, DASHBOARD, REGISTER, SIGN_IN } from "../constants/routes";
 import Logo from "../images/logo.png";
 
-const BootrtapNavBar: React.FC = () => {
+const BootrtapNavBar = (props: any) => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
       <Link to="/">
@@ -30,9 +30,14 @@ const BootrtapNavBar: React.FC = () => {
             Register
           </Link>
         </Nav>
+        <Nav>
+          <Link className="m-3" to={SIGN_IN}>
+            <i className="fas fa-sign-in-alt"></i> Sign Out
+          </Link>
+        </Nav>
       </Navbar.Collapse>
     </Navbar>
   );
 };
 
-export default BootrtapNavBar;
+export default withRouter(BootrtapNavBar);
