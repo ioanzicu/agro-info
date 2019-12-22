@@ -1,10 +1,13 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import fire from "../helpers/firebaseConfig";
 import { LANDING, DASHBOARD, REGISTER, SIGN_IN } from "../constants/routes";
 import Logo from "../images/logo.png";
 
 const BootrtapNavBar: React.FC = () => {
+  const logout = () => fire.auth().signOut();
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
       <Link to="/">
@@ -29,6 +32,9 @@ const BootrtapNavBar: React.FC = () => {
           <Link className="m-3" to={REGISTER}>
             Register
           </Link>
+          <Nav.Link className="m-3" onClick={logout}>
+            Register
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
