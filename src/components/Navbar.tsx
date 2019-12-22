@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { LANDING, DASHBOARD } from "../constants/routes";
 import Logo from "../images/logo.png";
 
 const BootrtapNavBar: React.FC = () => {
@@ -14,10 +15,10 @@ const BootrtapNavBar: React.FC = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Link className="m-3" to="/">
+          <Link className="m-3" to={LANDING}>
             <i className="fas fa-home"></i> Home
           </Link>
-          <Link className="m-3" to="/dashboard">
+          <Link className="m-3" to={DASHBOARD}>
             <i className="fas fa-columns"></i> Dashboard
           </Link>
         </Nav>
