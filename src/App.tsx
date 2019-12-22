@@ -8,8 +8,11 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Switch>
-        <Route path="/" exact component={Landing} />
-        <Route path="/dashboard" component={Dashboard} />
+        <Route path={process.env.PUBLIC_URL + "/"} exact component={Landing} />
+        <Route
+          path={process.env.PUBLIC_URL + "/dashboard"}
+          component={Dashboard}
+        />
       </Switch>
     </div>
   );
