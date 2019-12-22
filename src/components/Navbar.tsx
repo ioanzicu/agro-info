@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { LANDING, DASHBOARD } from "../constants/routes";
+import { LANDING, DASHBOARD, REGISTER, SIGN_IN } from "../constants/routes";
 import Logo from "../images/logo.png";
 
 const BootrtapNavBar: React.FC = () => {
@@ -23,12 +23,12 @@ const BootrtapNavBar: React.FC = () => {
           </Link>
         </Nav>
         <Nav>
-          <Nav.Link href="#deets">
-            <i className="fas fa-sign-in-alt"></i> Log In
-          </Nav.Link>
-          <Nav.Link eventKey={2} href="#memes">
+          <Link className="m-3" to={SIGN_IN}>
+            <i className="fas fa-sign-in-alt"></i> Sign In
+          </Link>
+          <Link className="m-3" to={REGISTER}>
             Register
-          </Nav.Link>
+          </Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
