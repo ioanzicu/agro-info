@@ -3,6 +3,7 @@ import { CardDeck, Card } from "react-bootstrap";
 
 const testimonialsCards = [
   {
+    id: "2343567",
     imageUrl:
       "https://images.unsplash.com/photo-1509506489701-dfe23b067808?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=360&q=80",
     title: "Brad Jordon",
@@ -11,6 +12,7 @@ const testimonialsCards = [
     position: "Farmer and Cowboy"
   },
   {
+    id: "0679682",
     imageUrl:
       "https://images.unsplash.com/photo-1477524076598-003de1c88dff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=360&q=60",
     title: "Marta Limard",
@@ -19,6 +21,7 @@ const testimonialsCards = [
     position: "Independent Florist Entrepreneur"
   },
   {
+    id: "0234431",
     imageUrl:
       "https://images.unsplash.com/photo-1544098485-2a2ed6da40ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=350&q=80",
     title: "Ricardo Alvarez",
@@ -34,8 +37,8 @@ const Testemonials: React.FC = () => {
       <h1 className="text-center">Testemonials</h1>
       <CardDeck className="pt-3 pb-3">
         {testimonialsCards &&
-          testimonialsCards.map(({ imageUrl, title, text, position }) => (
-            <Card className="mt-3 mb-3 mr-3 ml-3">
+          testimonialsCards.map(({ id, imageUrl, title, text, position }) => (
+            <Card key={id} className="mt-3 mb-3 mr-3 ml-3">
               <Card.Img variant="top" src={imageUrl} />
               <Card.Body>
                 <Card.Title>{title}</Card.Title>
