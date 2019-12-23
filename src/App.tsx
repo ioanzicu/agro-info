@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
-import Landing from "./pages/Landing_page";
+import Landing from "./pages/LandingPage";
 import { Route, Switch } from "react-router-dom";
 import { LANDING, DASHBOARD, REGISTER, SIGN_IN } from "./constants/routes";
-import Dashboard from "./pages/Dashboard_page";
-import Register from "./pages/Register_page";
-import SignIn from "./pages/SignIn_page";
+import Dashboard from "./pages/DashboardPage";
+import Register from "./pages/RegisterPage";
+import SignIn from "./pages/SignInPage";
+import UserAccount from "./pages/AccountPage";
 
 const App: React.FC = () => {
+  const userLocalData = window.localStorage.getItem(
+    "firebaseui::rememberedAccounts"
+  );
+  const [userData, setUserData] = useState<Object | null>(userLocalData);
+
   return (
     <div className="App">
       <Switch>
@@ -21,7 +27,10 @@ const App: React.FC = () => {
           component={Dashboard}
         />
         <Route path={process.env.PUBLIC_URL + REGISTER} component={Register} />
-        <Route path={process.env.PUBLIC_URL + SIGN_IN} component={SignIn} />
+        <Route
+          path={process.env.PUBLIC_URL + SIGN_IN}
+          render={props => <SignIn {...props} setUserData={setUserData} />}
+        />
       </Switch>
     </div>
   );
