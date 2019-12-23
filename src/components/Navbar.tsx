@@ -9,6 +9,7 @@ import Logo from "../images/logo.png";
 
 const BootrtapNavBar: React.FC = () => {
   const authStoreState = useStore(store);
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
       <NavLink activeClassName="active" to="/">

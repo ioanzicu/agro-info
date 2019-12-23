@@ -5,13 +5,9 @@ import { Route, Switch } from "react-router-dom";
 import { LANDING, DASHBOARD, USER_ACCOUNT, SIGN_IN } from "./constants/routes";
 import Dashboard from "./pages/DashboardPage";
 import SignIn from "./pages/SignInPage";
-import UserAccount from "./pages/AccountPage";
+import UserAccount from "./pages/UserPage";
 
 const App: React.FC = () => {
-  // const userLocalData = window.localStorage.getItem(
-  //   "firebaseui::rememberedAccounts"
-  // );
-
   return (
     <div className="App">
       <Switch>
