@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import firebase from "firebase";
+import { login } from "../store/authActions";
 import Navbar from "../components/Navbar";
 import Jumbotron from "../components/Jumbatron";
 import Slider from "../components/Slider";
@@ -7,6 +9,40 @@ import Testemonials from "../components/Testemonials";
 import Footer from "../components/Footer";
 
 const Landing: React.FC = () => {
+  useEffect(() => {
+    const unregisterAuthObserver = firebase.auth().onAuthStateChanged(
+      user => {
+        if (user) {
+          const displayName = user.displayName;
+          const email = user.email;
+          const emailVerified = user.emailVerified;
+          const photoURL = user.photoURL;
+          const uid = user.uid;
+          const phoneNumber = user.phoneNumber;
+          const providerData = user.providerData;
+          user.getIdToken().then((accessToken: string) => {
+            login({
+              displayName,
+              email,
+              emailVerified,
+              phoneNumber,
+              photoURL,
+              uid,
+              accessToken,
+              providerData
+            });
+          }, null);
+        } else {
+          console.log("something is not ok");
+        }
+      },
+      (error: any) => console.log("error", error)
+    );
+
+    // cleanup
+    return () => unregisterAuthObserver();
+  }, []);
+
   return (
     <>
       <div>

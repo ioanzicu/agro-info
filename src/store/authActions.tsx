@@ -1,13 +1,17 @@
 import { store, IStoreState, initialState } from "./store";
 
+// login
 export function login(user: IStoreState) {
-  // set token
-  window.localStorage.setItem("token", user.accessToken);
   // update user data
-  store.setState({
-    authorized: true,
-    ...user
-  });
+  if (window.localStorage.getItem("firebaseui::rememberedAccounts")) {
+    // set token
+    window.localStorage.setItem("token", user.accessToken);
+
+    store.setState({
+      authorized: true,
+      ...user
+    });
+  }
 }
 
 export function logout() {

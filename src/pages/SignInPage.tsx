@@ -32,7 +32,7 @@ const uiConfig = {
   ]
 };
 
-const SignIn = (props: any) => {
+const SignIn: React.FC = () => {
   useEffect(() => {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(
       user => {
