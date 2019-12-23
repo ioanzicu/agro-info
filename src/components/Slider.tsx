@@ -3,6 +3,7 @@ import { Carousel } from "react-bootstrap";
 
 const sliderContent = [
   {
+    id: "asj334",
     imageUrl:
       "https://images.unsplash.com/photo-1555952678-9da903a4cd5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
     title: "The Most Updated Weather Data",
@@ -10,6 +11,7 @@ const sliderContent = [
       "The weather data is updated every 3 hours, making sure that you get the most updated weather forecast."
   },
   {
+    id: "a2333",
     imageUrl:
       "https://images.unsplash.com/photo-1457530378978-8bac673b8062?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
     title: "Get Weather by the Location",
@@ -17,6 +19,7 @@ const sliderContent = [
       "You access data by the location you need or you are interested in."
   },
   {
+    id: "awda4",
     imageUrl:
       "https://images.unsplash.com/photo-1450528039619-bdc0c2d26850?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
     title: "Easy to use",
@@ -24,6 +27,7 @@ const sliderContent = [
       "Our platform offer an intuitive user experience for usability and comfort."
   },
   {
+    id: "a2344",
     imageUrl:
       "https://images.unsplash.com/photo-1492114011589-509c6e695d8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
     title: "Trusted Service",
@@ -35,8 +39,8 @@ const sliderContent = [
 const Slider: React.FC = () => {
   return (
     <Carousel>
-      {sliderContent.map(({ imageUrl, title, description }) => (
-        <Carousel.Item>
+      {sliderContent.map(({ id, imageUrl, title, description }) => (
+        <Carousel.Item key={id}>
           <img className="d-block w-100" src={imageUrl} alt="First slide" />
           <Carousel.Caption
             style={{
