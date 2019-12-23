@@ -11,12 +11,12 @@ interface IUserData {
 }
 
 const UserAccount = () => {
+  // get user data from local storage
   const userLocalData: any = window.localStorage.getItem(
     "firebaseui::rememberedAccounts"
   );
 
   const userData: Array<IUserData> = JSON.parse(userLocalData);
-  console.log(userLocalData);
 
   // if no data, show spinner
   if (!userData)
