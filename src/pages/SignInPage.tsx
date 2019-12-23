@@ -1,4 +1,7 @@
 import React, { useState, FormEvent, useEffect } from "react";
+import { useStore } from "react-stores";
+import { store } from "../store/store";
+import { login } from "../store/authActions";
 import Navbar from "../components/Navbar";
 import { LANDING } from "../constants/routes";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
@@ -41,9 +44,8 @@ const SignIn = (props: any) => {
           const uid = user.uid;
           const phoneNumber = user.phoneNumber;
           const providerData = user.providerData;
-          user.getIdToken().then((accessToken: any) => {
-            window.localStorage.setItem("token", accessToken);
-            props.setUserData({
+          user.getIdToken().then((accessToken: string) => {
+            login({
               displayName,
               email,
               emailVerified,
@@ -57,17 +59,22 @@ const SignIn = (props: any) => {
         } else {
           console.log("something is not ok");
         }
-        console.log("user", user);
       },
       (error: any) => console.log("error", error)
     );
+
+    // cleanup
     return () => unregisterAuthObserver();
   }, []);
 
+  const authStoreState = useStore(store);
+
   return (
     <div>
+      <Navbar />
       <p>Please sign-in:</p>
       <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+      {authStoreState.authorized && "You are authorized"}
     </div>
   );
 };
