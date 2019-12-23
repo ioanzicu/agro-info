@@ -47,7 +47,7 @@ class Firebase {
       return alert("Not authorized");
     }
     // store the quote in the firestore with the key: quote
-    return this.db.doc(`users_agro_info/${this.auth.currentUser.uid}`).set({
+    return this.db.doc(`agro-info-262516/${this.auth.currentUser.uid}`).set({
       quote
     });
   }
@@ -66,7 +66,7 @@ class Firebase {
   async getCurrentUserQuote() {
     if (this.auth.currentUser && this.auth.currentUser.uid) {
       const quote = await this.db
-        .doc(`users_agro_info/${this.auth.currentUser.uid}`)
+        .doc(`agro-info-262516/${this.auth.currentUser.uid}`)
         .get();
       return quote.get("quote"); // get by the key
     }

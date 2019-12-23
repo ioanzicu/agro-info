@@ -80,10 +80,18 @@ const Dashboard = (_props: any) => {
     }
   }, [url, latitude, longitude]);
 
-
   useEffect(() => {
-    firebase.getCurrentUserQuote().then(setQuote);
-  });
+    let isCancelled = false;
+    firebase.getCurrentUserQuote().then(val => {
+      if (!isCancelled) {
+        setQuote(val);
+      }
+    });
+
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
 
   if (!firebase.getCurrentUserName()) {
     // not loggeed in
@@ -94,7 +102,6 @@ const Dashboard = (_props: any) => {
     _props.history.replace(SIGN_IN);
     return null;
   }
-
 
   const getWeatherData = async (url: string) => {
     try {
