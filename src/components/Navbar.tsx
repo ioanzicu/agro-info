@@ -33,7 +33,7 @@ const BootrtapNavBar: React.FC = () => {
                 className="m-3"
                 to={USER_ACCOUNT}
               >
-                <i className="fas fa-columns"></i> User Account
+                <i className="fas fa-user-circle"></i> User Account
               </NavLink>
             </>
           )}
@@ -42,14 +42,14 @@ const BootrtapNavBar: React.FC = () => {
           {authStoreState && authStoreState.authorized ? (
             <>
               <Nav.Link className="m-3" disabled>
-                Hello,{" "}
+                <i className="fas fa-smile-wink"></i> Hello,{" "}
                 {authStoreState &&
                   authStoreState.displayName &&
                   authStoreState.displayName.split(" ")[1]}
                 !
               </Nav.Link>
               <Nav.Link className="m-3" onClick={logout}>
-                Sign Out
+                <i className="fas fa-sign-out-alt"></i> Sign Out
               </Nav.Link>
             </>
           ) : (
