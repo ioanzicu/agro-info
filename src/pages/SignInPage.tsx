@@ -1,5 +1,6 @@
-import React, { useState, FormEvent, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useStore } from "react-stores";
+import { Container } from "react-bootstrap";
 import { store } from "../store/store";
 import { login } from "../store/authActions";
 import Navbar from "../components/Navbar";
@@ -72,9 +73,14 @@ const SignIn: React.FC = () => {
   return (
     <div>
       <Navbar />
-      <p>Please sign-in:</p>
-      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-      {authStoreState.authorized && "You are authorized"}
+      <Container>
+        <h1 className="m-5">Please Sign-in:</h1>
+        <StyledFirebaseAuth
+          uiConfig={uiConfig}
+          firebaseAuth={firebase.auth()}
+        />
+        {authStoreState.authorized && "You are authorized"}
+      </Container>
     </div>
   );
 };

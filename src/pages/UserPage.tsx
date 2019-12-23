@@ -26,7 +26,13 @@ const UserAccount = () => {
     <>
       <Navbar />
       <Container className="mt-5 mb-5 pb-2">
-        <h1 className="m-3">Hi and Welcome to the Agro Info</h1>
+        <h1 className="m-3">
+          Hi{" "}
+          {userData &&
+            userData[0].displayName &&
+            userData[0].displayName.split(" ")[1]}{" "}
+          and Welcome to the Agro Info
+        </h1>
         <Row>
           <Col sm={4} className="mb-2 mt-2">
             {userData && userData[0].photoUrl && (
