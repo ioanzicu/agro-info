@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Navbar from "../components/Navbar";
+import Logo from "../components/Logo";
 import Footer from "../components/Footer";
 
 const About: React.FC = () => {
@@ -21,15 +22,19 @@ const About: React.FC = () => {
       <Navbar />
       <Container className="mt-5 mb-5 pb-2">
         <div
+          className="boxShadow"
           style={{
-            backgroundColor: "rgba(220, 220, 220, 0.9)",
+            backgroundColor: "rgba(220, 220, 220, 0.8)",
             borderRadius: "0.7rem",
             height: "60vh"
           }}
         >
           <h1 className="pt-5">About Agro Info</h1>
+          <hr style={{ width: "70%" }} />
+          <Logo />
+          <hr style={{ width: "70%" }} />
           <Row className="justify-content-md-center">
-            <div className="m-5" style={{ width: "60%" }}>
+            <div className="ml-5 mr-5" style={{ width: "60%" }}>
               {content}
             </div>
           </Row>

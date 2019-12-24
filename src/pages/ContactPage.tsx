@@ -17,14 +17,23 @@ const Contact: React.FC = () => {
     >
       <Navbar />
       <Container className="mt-5 mb-5 pb-2">
-        <div style={{ height: "60vh" }}>
-          <h1>Contacts</h1>
+        <div
+          className="boxShadow"
+          style={{
+            backgroundColor: "rgba(220, 220, 220, 0.8)",
+            borderRadius: "0.7rem",
+            height: "60vh"
+          }}
+        >
+          <h1 className="pt-5">Contacts</h1>
+          <hr style={{ width: "70%" }} />
           <Row className="justify-content-md-center">
             <Col md="auto">
               <Table
-                className="p-5 mt-5"
+                bordered
+                className="p-5 mt-3"
                 style={{
-                  backgroundColor: "rgba(220, 220, 220, 0.9)",
+                  backgroundColor: "rgb(220, 220, 220)",
                   borderRadius: "1rem"
                 }}
                 responsive
