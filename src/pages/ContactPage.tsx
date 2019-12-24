@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Table, Col, Row } from "react-bootstrap";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import EmailJS from "../components/EmailJS";
 
 const Contact: React.FC = () => {
   const bgImage =
@@ -28,9 +29,8 @@ const Contact: React.FC = () => {
           <h1 className="pt-5">Contacts</h1>
           <hr style={{ width: "70%" }} />
           <Row className="justify-content-md-center">
-            <Col md="auto">
+            <Col sm={5} className="m-1">
               <Table
-                bordered
                 className="p-5 mt-3"
                 style={{
                   backgroundColor: "rgb(220, 220, 220)",
@@ -42,10 +42,9 @@ const Contact: React.FC = () => {
               >
                 <thead>
                   <tr>
-                    <th colSpan={2}># How you can reach use</th>
+                    <th colSpan={2}># How you can reach us:</th>
                   </tr>
                 </thead>
-
                 <tbody>
                   <tr>
                     <td>
@@ -57,7 +56,7 @@ const Contact: React.FC = () => {
                     <td>
                       <i className="fas fa-at"></i>
                     </td>
-                    <td>agro-info@gmail.com</td>
+                    <td>agro.info2020@gmail.com</td>
                   </tr>
                   <tr>
                     <td>
@@ -67,6 +66,9 @@ const Contact: React.FC = () => {
                   </tr>
                 </tbody>
               </Table>
+            </Col>
+            <Col sm={5} className="m-1">
+              <EmailJS />
             </Col>
           </Row>
         </div>
