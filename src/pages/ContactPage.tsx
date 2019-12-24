@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 const Contact: React.FC = () => {
   const bgImage =
     "https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1253&q=80";
+
   return (
     <div
       style={{
