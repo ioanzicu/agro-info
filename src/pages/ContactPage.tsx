@@ -19,11 +19,10 @@ const Contact: React.FC = () => {
       <Navbar />
       <Container className="mt-5 mb-5 pb-2">
         <div
-          className="boxShadow"
+          className="boxShadow p-3"
           style={{
             backgroundColor: "rgba(220, 220, 220, 0.8)",
-            borderRadius: "0.7rem",
-            height: "60vh"
+            borderRadius: "0.7rem"
           }}
         >
           <h1 className="pt-5">Contacts</h1>
