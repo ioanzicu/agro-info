@@ -8,7 +8,9 @@ const About: React.FC = () => {
     <>
       <Navbar />
       <Container className="mt-5 mb-5 pb-2">
-        <h1>About Us</h1>
+        <div style={{ height: "60vh" }}>
+          <h1>About Us</h1>
+        </div>
       </Container>
       <Footer />
     </>
