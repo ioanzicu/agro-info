@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Image, Table, Row, Col } from "react-bootstrap";
+import { Container, Table, Col, Row } from "react-bootstrap";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -18,7 +18,47 @@ const Contact: React.FC = () => {
       <Container className="mt-5 mb-5 pb-2">
         <div style={{ height: "60vh" }}>
           <h1>Contacts</h1>
-          <div className="justify-content-center align-self-center"></div>
+          <Row className="justify-content-md-center">
+            <Col md="auto">
+              <Table
+                className="p-5 mt-5"
+                style={{
+                  backgroundColor: "rgba(220, 220, 220, 0.9)",
+                  borderRadius: "1rem"
+                }}
+                responsive
+                striped
+                hover
+              >
+                <thead>
+                  <tr>
+                    <th colSpan={2}># How you can reach use</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>
+                      <i className="fas fa-phone-alt"></i>
+                    </td>
+                    <td>+48 034 234 134</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <i className="fas fa-at"></i>
+                    </td>
+                    <td>agro-info@gmail.com</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <i className="fas fa-map-marked-alt"></i>
+                    </td>
+                    <td>Katowice, Poland, 40-001</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </Col>
+          </Row>
         </div>
       </Container>
       <Footer />
