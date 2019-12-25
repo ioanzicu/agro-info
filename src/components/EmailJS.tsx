@@ -14,7 +14,6 @@ const EmailJS: React.FC = () => {
 
   const handleSubmit: any = (event: FormEvent<HTMLInputElement>) => {
     const form = event.currentTarget;
-    console.log(event.currentTarget);
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
@@ -23,6 +22,7 @@ const EmailJS: React.FC = () => {
   };
 
   const sendEmail = (event: any) => {
+    // Prevent reload the page on submit
     event.preventDefault();
     console.log(name, email, message);
 
@@ -32,6 +32,7 @@ const EmailJS: React.FC = () => {
     const user_id = "user_4PoajHrWaY8xLkd8aNYpg";
 
     if (name && email && message) {
+      // Send form data, and resolve promise
       emailjs.sendForm(service_id, template_id, event.target, user_id).then(
         (result: any) => {
           setEmailSent(true);
@@ -42,6 +43,7 @@ const EmailJS: React.FC = () => {
           console.log("success", result.text);
         },
         (error: any) => {
+          // Set error flags
           setEmailSent(false);
           setEmailError(error.text);
         }

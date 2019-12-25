@@ -14,7 +14,6 @@ const Dashboard_page: React.FC = () => {
 
   const [coordinates, setCoordinates] = useState(initialValues);
 
-  console.log("coordinates", coordinates);
   return (
     <div>
       <Navbar />
