@@ -97,7 +97,7 @@ const InputLocation = memo((_props: any) => {
     setLoading(false);
   };
 
-  const handleSubmit: any = (event: FormEvent<HTMLInputElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     // prevent page from refreshing
     event.preventDefault();
 
@@ -151,8 +151,6 @@ const InputLocation = memo((_props: any) => {
           </Button>
         </Col>
         <Col sm={2} md={2} lg={3}></Col>
-
-        <p>{JSON.stringify(results)}</p>
       </Form.Group>
     </Form>
   );

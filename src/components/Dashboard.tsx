@@ -128,7 +128,7 @@ const Dashboard = (_props: any) => {
             />
           )}
           {results && results.weather[0].description && (
-            <p>{results.weather[0].description}</p>
+            <p>{capitalizeString(results.weather[0].description)}</p>
           )}
         </div>
       )}
@@ -138,7 +138,7 @@ const Dashboard = (_props: any) => {
           <thead>
             <tr>
               <th>#</th>
-              <th>Temperature</th>
+              <th colSpan={2}>Temperature</th>
               <th>Values</th>
             </tr>
           </thead>
@@ -153,9 +153,9 @@ const Dashboard = (_props: any) => {
                       dangerouslySetInnerHTML={{
                         __html: temperatureIcons[index]
                       }}
-                    ></span>{" "}
-                    {capitalizeString(replaceUnderscore(key))}
+                    ></span>
                   </td>
+                  <td>{capitalizeString(replaceUnderscore(key))}</td>
                   <td>{value}</td>
                 </tr>
               ))}
@@ -164,7 +164,7 @@ const Dashboard = (_props: any) => {
           <thead>
             <tr>
               <th>#</th>
-              <th>Wind</th>
+              <th colSpan={2}>Wind</th>
               <th>Values</th>
             </tr>
           </thead>
@@ -177,9 +177,9 @@ const Dashboard = (_props: any) => {
                   <td>
                     <span
                       dangerouslySetInnerHTML={{ __html: windIcons[index] }}
-                    ></span>{" "}
-                    {capitalizeString(key)}
+                    ></span>
                   </td>
+                  <td>{capitalizeString(key)}</td>
                   <td>{value}</td>
                 </tr>
               ))}
@@ -188,7 +188,7 @@ const Dashboard = (_props: any) => {
           <thead>
             <tr>
               <th>#</th>
-              <th>Clouds</th>
+              <th colSpan={2}>Clouds</th>
               <th>Values</th>
             </tr>
           </thead>
@@ -197,8 +197,9 @@ const Dashboard = (_props: any) => {
               <tr>
                 <td>+</td>
                 <td>
-                  <i className="fas fa-cloud"></i> Clouds
+                  <i className="fas fa-cloud"></i>
                 </td>
+                <td>Clouds</td>
                 <td>{results.clouds.all}</td>
               </tr>
             )}
