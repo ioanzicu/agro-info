@@ -6,6 +6,7 @@ const EmailJS: React.FC = () => {
   // Flags
   const [validated, setValidated] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
+  const [emailError, setEmailError] = useState("");
   // Form data
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -33,11 +34,15 @@ const EmailJS: React.FC = () => {
       emailjs.sendForm(service_id, template_id, event.target, user_id).then(
         (result: any) => {
           setEmailSent(true);
+          // Empty form fields
+          setName("");
+          setEmail("");
+          setMessage("");
           console.log("success", result.text);
         },
         (error: any) => {
           setEmailSent(false);
-          console.log("error", error.text);
+          setEmailError(error.text);
         }
       );
     } else {
@@ -100,6 +105,11 @@ const EmailJS: React.FC = () => {
       {name && email && message && emailSent && (
         <Alert variant="success" className="mt-3">
           Thank you <b>{name}</b> for your email!
+        </Alert>
+      )}
+      {emailError && (
+        <Alert variant="danger" className="mt-3">
+          {emailError}
         </Alert>
       )}
     </Form>
