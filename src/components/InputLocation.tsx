@@ -140,19 +140,19 @@ const InputLocation = memo((_props: any) => {
     <Form onSubmit={handleSubmit}>
       <Form.Group as={Row} md="4">
         <Col sm={2} md={2} lg={2}></Col>
-        <Col sm={6} md={6} lg={6}>
+        <Col sm={6} md={6} lg={5}>
           <Form.Control
             type="text"
             placeholder="Enter Name of the City/Vilage"
             {...bind}
           />
         </Col>
-        <Col sm={2} md={2} lg={2}>
+        <Col sm={2} md={2} lg={3}>
           <Button className="pr-3 pl-3" variant="primary" type="submit">
-            <i className="fas fa-search pr-3"></i> Submit
+            <i className="fas fa-search-location pr-3"></i> Search Loaction
           </Button>
         </Col>
-        <Col sm={2} md={2} lg={2}></Col>
+        <Col sm={2} md={2} lg={3}></Col>
 
         <p>{JSON.stringify(results)}</p>
       </Form.Group>

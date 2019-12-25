@@ -4,7 +4,14 @@ import { NavLink } from "react-router-dom";
 import { useStore } from "react-stores";
 import { logout } from "../store/authActions";
 import { store } from "../store/store";
-import { LANDING, DASHBOARD, USER_ACCOUNT, SIGN_IN } from "../constants/routes";
+import {
+  LANDING,
+  ABOUT,
+  CONTACT,
+  DASHBOARD,
+  USER_ACCOUNT,
+  SIGN_IN
+} from "../constants/routes";
 import Logo from "../images/logo.png";
 
 const BootrtapNavBar: React.FC = () => {
@@ -22,6 +29,12 @@ const BootrtapNavBar: React.FC = () => {
         <Nav className="mr-auto">
           <NavLink activeClassName="active" className="m-3" to={LANDING}>
             <i className="fas fa-home"></i> Home
+          </NavLink>
+          <NavLink activeClassName="active" className="m-3" to={ABOUT}>
+            <i className="fas fa-info-circle"></i> About
+          </NavLink>
+          <NavLink activeClassName="active" className="m-3" to={CONTACT}>
+            <i className="fas fa-phone-alt"></i> Contact
           </NavLink>
           {authStoreState.authorized && (
             <>
