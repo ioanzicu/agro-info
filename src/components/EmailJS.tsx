@@ -26,9 +26,10 @@ const EmailJS: React.FC = () => {
     event.preventDefault();
     console.log(name, email, message);
 
-    const service_id = "";
-    const template_id = "";
-    const user_id = "";
+    // credentials
+    const service_id = "gmail";
+    const template_id = "template_QsBMhje4";
+    const user_id = "user_4PoajHrWaY8xLkd8aNYpg";
 
     if (name && email && message) {
       emailjs.sendForm(service_id, template_id, event.target, user_id).then(
@@ -109,7 +110,7 @@ const EmailJS: React.FC = () => {
       )}
       {emailError && (
         <Alert variant="danger" className="mt-3">
-          {emailError}
+          Something went wrong. Try again!
         </Alert>
       )}
     </Form>
