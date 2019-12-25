@@ -1,20 +1,21 @@
-import React, { FormEvent, useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent } from "react";
 import emailjs from "emailjs-com";
 import { Form, Button, Alert } from "react-bootstrap";
 
 const EmailJS: React.FC = () => {
   // Flags
-  const [validated, setValidated] = useState(false);
-  const [emailSent, setEmailSent] = useState(false);
+  const [validated, setValidated] = useState<boolean>(false);
+  const [emailSent, setEmailSent] = useState<boolean>(false);
   const [emailError, setEmailError] = useState("");
   // Form data
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
 
-  const handleSubmit: any = (event: FormEvent<HTMLInputElement>) => {
+  const handleSubmit = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void => {
     const form = event.currentTarget;
-    console.log(event.currentTarget);
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
@@ -22,32 +23,42 @@ const EmailJS: React.FC = () => {
     setValidated(true);
   };
 
+  // check if the string exist, return is else return empty string
+  const validOrEmptyString = (str: string | undefined) => (str ? str : "");
+
   const sendEmail = (event: any) => {
+    // Prevent reload the page on submit
     event.preventDefault();
-    console.log(name, email, message);
 
-    // credentials
-    const service_id = "gmail";
-    const template_id = "template_QsBMhje4";
-    const user_id = "user_4PoajHrWaY8xLkd8aNYpg";
+    // EmailJS credentials
+    const service_id: string = validOrEmptyString(
+      process.env.REACT_APP_EMAILJS_SERVICE_ID
+    );
+    const template_id: string = validOrEmptyString(
+      process.env.REACT_APP_EMAILJS_TEMPLATE_ID
+    );
+    const user_id: string = validOrEmptyString(
+      process.env.REACT_APP_EMAILJS_USER_ID
+    );
 
-    if (name && email && message) {
+    // Validate email address
+    const emailPattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    const validEmail = emailPattern.test(email);
+
+    if (name && validEmail && message) {
+      // Send form data, and resolve promise
       emailjs.sendForm(service_id, template_id, event.target, user_id).then(
         (result: any) => {
           setEmailSent(true);
-          // Empty form fields
-          setName("");
-          setEmail("");
-          setMessage("");
-          console.log("success", result.text);
         },
         (error: any) => {
+          // Set error flags
           setEmailSent(false);
           setEmailError(error.text);
         }
       );
     } else {
-      console.log("form is empty");
+      console.log("Form or a fiel is empty/not valid.");
     }
   };
   return (
@@ -81,7 +92,7 @@ const EmailJS: React.FC = () => {
           }
         />
         <Form.Control.Feedback type="invalid">
-          Please Enter Email Address.
+          Please Enter Valid Email Address.
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group controlId="formGroupMessage">
