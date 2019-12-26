@@ -74,7 +74,7 @@ const InputLocation = memo((_props: any) => {
   const [results, setResults] = useState<IGeocode>();
   const [error, setError] = useState<any>("");
 
-  // HEREMAP Geocoder API for geting the geografical coordintaions by the name of the location
+  // HEREMAP Geocoder API for getting the geographical coordination by the name of the location
   const url = `https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=${process.env.REACT_APP_HEREMAP_GEOCODE_API}&searchtext=${value}`;
 
   const fetchData = async (url: string) => {
