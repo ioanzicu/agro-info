@@ -62,30 +62,38 @@ export interface Wind {
 const Dashboard = (_props: any) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [results, setResults] = useState<IWeatherResults>();
+  const [forecast, setForecast] = useState();
   const [error, setError] = useState<any>("");
 
   const { latitude, longitude, locationName } = _props.coordinates;
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
+  const url: string = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
+
+  const urlForecast: string = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
 
   useEffect(() => {
     // make reqiest when the longitude and latitude are set
     if (latitude !== 0 && longitude !== 0) {
-      getWeatherData(url);
+      getWeatherData(url, urlForecast);
     }
   }, [url, latitude, longitude]);
 
-  const getWeatherData = async (url: string) => {
+  const getWeatherData = async (url: string, urlForecast: string) => {
     try {
       // request data
       setLoading(true);
       const data = await fetch(url);
       const json = await data.json();
 
+      const forecastData = await fetch(urlForecast);
+      const forecastJson = await forecastData.json();
+
       // success
-      if (json) {
+      if (json && forecastJson) {
         setLoading(false);
         setResults(json);
+        setForecast(forecastJson);
+        console.log("json", forecastJson.list);
       }
     } catch (error) {
       // fail
@@ -101,6 +109,8 @@ const Dashboard = (_props: any) => {
   // if an error occur -> show alert message
   if (error)
     return <Alert variant="danger">Something went wrong: {error}.</Alert>;
+
+  const kelvinToCelsius = (celcius: number) => (celcius - 273.15).toFixed(2);
 
   const temperatureIcons = [
     '<i class="fas fa-thermometer-half"></i>',
@@ -156,7 +166,8 @@ const Dashboard = (_props: any) => {
                     ></span>
                   </td>
                   <td>{capitalizeString(replaceUnderscore(key))}</td>
-                  <td>{value}</td>
+                  {/* Kelvin to celcius */}
+                  <td>{index < 4 ? kelvinToCelsius(value) + " °C" : value}</td>
                 </tr>
               ))}
           </tbody>
