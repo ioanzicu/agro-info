@@ -58,9 +58,10 @@ const EmailJS: React.FC = () => {
         }
       );
     } else {
-      console.log("Form or a fiel is empty/not valid.");
+      console.log("Form or a field is empty/not valid.");
     }
   };
+
   return (
     <Form noValidate validated={validated} onSubmit={sendEmail}>
       <h5>Keep in touch...</h5>
