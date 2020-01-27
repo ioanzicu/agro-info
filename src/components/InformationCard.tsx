@@ -33,17 +33,26 @@ const tableHeadStyle = { backgroundColor: "#6F6F6F", color: "#FFFFFF" };
 const InformationCard = ({ data, locationName, unixTimestamp }: Props) => (
   <div className="m-4">
     <div className="text-center">
+      <hr />
       {locationName && <h1>{locationName}</h1>}
-      {unixTimestamp && <p>{timeConverterUnixToDate(unixTimestamp)}</p>}
+      {unixTimestamp && (
+        <h2 className="d-inline">
+          Forecast for {timeConverterUnixToDate(unixTimestamp)}
+        </h2>
+      )}
       {data && data.weather[0] && (
         <img
           src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
           alt="icon"
+          className="d-inline"
         />
       )}
       {data && data.weather[0].description && (
-        <p>{capitalizeString(data.weather[0].description)}</p>
+        <h2 className="d-inline">
+          {capitalizeString(data.weather[0].description)}
+        </h2>
       )}
+      <hr />
     </div>
     <Table className="p-5" bordered hover responsive>
       {/* TEMPERATURE */}

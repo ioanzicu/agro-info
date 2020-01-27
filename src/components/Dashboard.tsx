@@ -60,11 +60,6 @@ const Dashboard = (_props: any) => {
       {results && results.weather && (
         <InformationCard data={results} locationName={locationName} />
       )}
-      {forecast && (
-        <div className="text-center">
-          <h1>Forecast</h1>
-        </div>
-      )}
       {/* FORECAST TABLES */}
       {forecast &&
         forecast.list &&
