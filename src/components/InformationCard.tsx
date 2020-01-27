@@ -3,13 +3,15 @@ import { Table } from "react-bootstrap";
 import {
   capitalizeString,
   replaceUnderscore,
-  kelvinToCelsius
+  kelvinToCelsius,
+  timeConverterUnixToDate
 } from "../helpers/functions";
 import { IWeatherResults } from "../types/types";
 
 interface Props {
   data: IWeatherResults;
   locationName?: string;
+  unixTimestamp?: number;
 }
 
 const temperatureIcons = [
@@ -28,10 +30,11 @@ const windIcons = [
 
 const tableHeadStyle = { backgroundColor: "#6F6F6F", color: "#FFFFFF" };
 
-const InformationCard = ({ data, locationName }: Props) => (
+const InformationCard = ({ data, locationName, unixTimestamp }: Props) => (
   <div className="m-4">
     <div className="text-center">
       {locationName && <h1>{locationName}</h1>}
+      {unixTimestamp && <p>{timeConverterUnixToDate(unixTimestamp)}</p>}
       {data && data.weather[0] && (
         <img
           src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}

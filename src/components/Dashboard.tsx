@@ -68,8 +68,12 @@ const Dashboard = (_props: any) => {
       {/* FORECAST TABLES */}
       {forecast &&
         forecast.list &&
-        forecast.list.map((item: IWeatherResults) => (
-          <InformationCard data={item} />
+        forecast.list.map((item: IWeatherResults, index: number) => (
+          <InformationCard
+            key={index + item.dt}
+            data={item}
+            unixTimestamp={item.dt}
+          />
         ))}
     </Container>
   );
