@@ -9,3 +9,6 @@ export function capitalizeString(str: string): string {
 export function replaceUnderscore(str: string): string {
   return str.replace(/_/gi, " ");
 }
+
+export const kelvinToCelsius = (celcius: number): string =>
+  (celcius - 273.15).toFixed(2);
