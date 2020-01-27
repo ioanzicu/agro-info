@@ -49,7 +49,7 @@ const Dashboard = (_props: any) => {
   };
 
   // if request is loading -> show spinner
-  if (loading) return <Spinner animation="border" />;
+  if (loading) return <Spinner animation="border" className="m-5" />;
   // if an error occur -> show alert message
   if (error)
     return <Alert variant="danger">Something went wrong: {error}.</Alert>;
