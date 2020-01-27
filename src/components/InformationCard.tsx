@@ -9,6 +9,7 @@ import { IWeatherResults } from "../types/types";
 
 interface Props {
   data: IWeatherResults;
+  locationName?: string;
 }
 
 const temperatureIcons = [
@@ -25,12 +26,26 @@ const windIcons = [
   '<i class="fas fa-compass"></i>'
 ];
 
-const InformationCard = ({ data }: Props) => {
-  return (
+const tableHeadStyle = { backgroundColor: "#6F6F6F", color: "#FFFFFF" };
+
+const InformationCard = ({ data, locationName }: Props) => (
+  <div className="m-4">
+    <div className="text-center">
+      {locationName && <h1>{locationName}</h1>}
+      {data && data.weather[0] && (
+        <img
+          src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+          alt="icon"
+        />
+      )}
+      {data && data.weather[0].description && (
+        <p>{capitalizeString(data.weather[0].description)}</p>
+      )}
+    </div>
     <Table className="p-5" bordered hover responsive>
       {/* TEMPERATURE */}
       <thead>
-        <tr>
+        <tr style={tableHeadStyle}>
           <th>#</th>
           <th colSpan={2}>Temperature</th>
           <th>Values</th>
@@ -57,7 +72,7 @@ const InformationCard = ({ data }: Props) => {
       </tbody>
       {/* WIND */}
       <thead>
-        <tr>
+        <tr style={tableHeadStyle}>
           <th>#</th>
           <th colSpan={2}>Wind</th>
           <th>Values</th>
@@ -81,7 +96,7 @@ const InformationCard = ({ data }: Props) => {
       </tbody>
       {/* Clouds */}
       <thead>
-        <tr>
+        <tr style={tableHeadStyle}>
           <th>#</th>
           <th colSpan={2}>Clouds</th>
           <th>Values</th>
@@ -100,7 +115,7 @@ const InformationCard = ({ data }: Props) => {
         )}
       </tbody>
     </Table>
-  );
-};
+  </div>
+);
 
 export default InformationCard;

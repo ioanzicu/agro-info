@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Container, Spinner, Alert } from "react-bootstrap";
-import { capitalizeString } from "../helpers/functions";
 import InformationCard from "./InformationCard";
 import { IWeatherResults } from "../types/types";
 
@@ -57,29 +56,21 @@ const Dashboard = (_props: any) => {
 
   return (
     <Container className="p-5">
-      {locationName && (
-        <div className="text-center">
-          <h1>{locationName}</h1>
-          {results && results.weather[0] && (
-            <img
-              src={`http://openweathermap.org/img/wn/${results.weather[0].icon}@2x.png`}
-              alt="icon"
-            />
-          )}
-          {results && results.weather[0].description && (
-            <p>{capitalizeString(results.weather[0].description)}</p>
-          )}
-        </div>
+      {/* CURRENT WEATHER TABLE INFORMATION */}
+      {results && results.weather && (
+        <InformationCard data={results} locationName={locationName} />
       )}
-      {results && results.weather && <InformationCard data={results} />}
       {forecast && (
         <div className="text-center">
           <h1>Forecast</h1>
         </div>
       )}
+      {/* FORECAST TABLES */}
       {forecast &&
         forecast.list &&
-        forecast.list.map((data: string) => <p>{JSON.stringify(data)}</p>)}
+        forecast.list.map((item: IWeatherResults) => (
+          <InformationCard data={item} />
+        ))}
     </Container>
   );
 };
